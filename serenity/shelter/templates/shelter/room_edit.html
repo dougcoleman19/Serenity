@@ -1,0 +1,57 @@
+{% extends "../serenity/base_main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+
+<h3>Update Bed</h3>
+
+
+<form action="" method="POST">{% csrf_token %}
+<div class="room box-shadow">
+    <h4>Room </h4>
+
+    <table>
+
+    <tr>
+        <td>Room: </td>
+        <td>{{ form.room_id }}</td>
+    </tr>
+
+    <tr>
+        <td>Bed ID: </td>
+        <td>{{ form.bed_id }}</td>
+    </tr>
+    <tr>
+        <td>Bed Size: </td>
+        <td>{{ form.bed_size }}</td>
+    </tr>
+    <tr>
+        <td valign="top">Client: </td>
+        <td>{% if form.errors %}
+                 <p class="alert alert-error">Error: Client already assigned elsewhere</p>
+            {% endif %}
+            {{ form.client_assigned }}</td>
+    </tr>
+
+    <tr>
+        <td colspan="2"><hr class="style-two" /></td>
+    </tr>
+
+    <tr>
+        <td><input type="submit" value="Submit" /></td>
+        <td></td>
+    </tr>
+
+    </table>
+</div>
+
+
+</form>
+
+
+<br /><br />
+
+
+{% endblock %}

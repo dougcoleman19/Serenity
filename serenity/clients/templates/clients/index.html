@@ -1,0 +1,94 @@
+{% extends "../serenity/base_main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h3>Current Active Clients</h3>
+<table class="client-list">
+{% if latest_client_list %}
+    <tr>
+        <th>Client number</th>
+        <th>Client First Name</th>
+        <th>Client Last Name</th>
+        <th>Status</th>
+        <th> </th>
+    </tr>
+    {% for client in latest_client_list %}
+        <tr >
+            <td>{{ client.client_number }}</td>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td>{{ client.status_id }}</td>
+            <td><a class="edit-link" href="{% url 'clients:detail' client.client_id %}"><img src="{% static 'media/edit-interface-symbol_318-61460.jpg' %}" style="width: 14px; height: 14px;" /></a></td>
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No clients are available.</p>
+{% endif %}
+</table>
+
+<a class="client-page-link" href="{% url 'clients:clientnew' %}">Click to create a new client</a>
+
+<div class="widget-view">
+    <h3>Client Missing Numbers</h3>
+
+    <table class="client-list">
+    {% if clients_missing_number %}
+        <tr>
+            <th>Client Number</th>
+            <th>Client First Name</th>
+            <th>Client Last Name</th>
+            <th>Status</th>
+            <th> </th>
+        </tr>
+    {% for client in clients_missing_number %}
+        <tr >
+            <td>{{ client.client_number }}</td>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td>{{ client.status_id }}</td>
+            <td><a class="edit-link" href="{% url 'clients:detail' client.client_id %}"><img src="{% static 'media/edit-interface-symbol_318-61460.jpg' %}" style="width: 14px; height: 14px;" /></a></td>
+        </tr>
+    {% endfor %}
+
+    {% else %}
+        <p>No clients are available.</p>
+    {% endif %}
+    </table>
+</div>
+
+<h3>Current Active Perps</h3>
+
+<table class="client-list">
+{% if latest_perps_list %}
+    <tr>
+        <th>Perp ID</th>
+        <th>Perp First Name</th>
+        <th>Perp Last Name</th>
+        <th>Status</th>
+        <th> </th>
+    </tr>
+    {% for perp in latest_perps_list %}
+        <tr >
+            <td>{{ perp.perp_id }}</td>
+            <td>{{ perp.first_name }}</td>
+            <td>{{ perp.last_name }}</td>
+            <td>{{ perp.status_id }}</td>
+            <td><img src="{% static 'media/edit-interface-symbol_318-61460.jpg' %}" style="width: 14px; height: 14px;" /></td>
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No Perps are available.</p>
+{% endif %}
+</table>
+
+
+
+<br /><br />
+
+
+{% endblock %}
+

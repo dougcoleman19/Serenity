@@ -1,0 +1,164 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+
+<h3 class="header">Call Log</h3>
+
+<form action="" method="POST">{% csrf_token %}
+
+{% if form.errors %}
+<div class="alert alert-error">
+    <ul>
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        {% if form.first_name.errors %}
+            {% for error in form.first_name.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.last_name.errors %}
+            {% for error in form.last_name.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.city.errors %}
+            {% for error in form.city.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.address_1.errors %}
+            {% for error in form.address_1.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.address_2.errors %}
+            {% for error in form.address_2.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+    <table border="0" id="add_client">
+        <tr>
+            <td><label for="{{ form.call_log_type_for_label }}">Call_Type: </label></td>
+            <td>{{ form.call_log_type }}</td>
+            <td><label for="{{ form.time_of_call_for_label }}">Call Time: </label></td>
+            <td>{{ form.time_of_call }}</td>
+            <td><label for="{{ form.county_of_incident_for_label }}">County of Incident: </label></td>
+            <td>{{ form.county_of_incident }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.first_name_for_label }}">First Name: </label></td>
+            <td>{{ form.first_name }}</td>
+            <td><label for="{{ form.middle_init_for_label }}">MI: </label></td>
+            <td>{{ form.middle_init }}</td>
+            <td><label for="{{ form.last_name_for_label }}">Last Name: </label></td>
+            <td>{{ form.last_name }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.victims_name_for_label }}">Name of Victim: </label></td>
+            <td>{{ form.victims_name }}</td>
+            <td><label for="{{ form.safe_call_for_label }}">Safe to call back?: </label></td>
+            <td>{{ form.safe_call }}</td>
+            <td><label for="{{ form.safe_phone_contact_for_label }}">Safe Phone Number: </label></td>
+            <td>{{ form.safe_phone_contact }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.county_of_residence_for_label }}">County of Residence </label></td>
+            <td>{{ form.county_of_residence }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.abusers_name_for_label }}">Name of Abuser: </label></td>
+            <td>{{ form.abusers_name }}</td>
+            <td><label for="{{ form.abusers_city_for_label }}">Abuser's City: </label></td>
+            <td>{{ form.abusers_city }}</td>
+            <td><label for="{{ form.immediate_danger_for_label }}">Immediate Danger: </label></td>
+            <td>{{ form.immediate_danger }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.callback_for_label }}">Does caller require a call back?: </label></td>
+            <td>{{ form.callback }}</td>
+
+            <td><label for="{{ form.nature_of_problem_for_label }}">Nature of Problem: </label></td>
+            <td>{{ form.nature_of_problem }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Victim Information</strong></p></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ form.previous_victim_dv_for_label }}">Has victim previously been a victim of Domestic Violence? </label></td>
+            <td>{{ form.previous_victim_dv }}</td>
+            <td><label for="{{ form.dv_when_for_label }}">If Yes, when?: </td>
+            <td>{{ form.dv_when }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ form.previous_victim_sa_for_label }}">Has victim previously been a victim of Sexual Assault? </label></td>
+            <td>{{ form.previous_victim_sa }}</td>
+            <td><label for="{{ form.sa_when_for_label }}">If Yes, when?: </td>
+            <td>{{ form.sa_when }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ form.children_for_label }}">Does victim have children? </label></td>
+            <td>{{ form.children }}</td>
+            <td><label for="{{ form.num_of_children_for_label }}">If Yes, How Many?: </td>
+            <td>{{ form.num_children }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.children_info_for_label }}">Children Info: </label></td>
+            <td colspans="5">{{ form.children_info }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ form.previous_client_for_label }}">Has victim previously been a client of Avenues? </label></td>
+            <td>{{ form.previous_client }}</td>
+            <td><label for="{{ form.pc_when_for_label }}">If Yes, when?: </td>
+            <td>{{ form.pc_when }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.taken_by_for_label }}">Call taken by: </label></td>
+            <td>{{ form.taken_by }}</td>
+            <td><label for="{{ form.call_length_for_label }}">Length of Call: </td>
+            <td>{{ form.call_length }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td valign="top"><label for="{{ form.call_notes_for_label }}">Call notes: </label></td>
+            <td colspan="5">{{ form.call_notes }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Admin Use Only</strong></p></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.by_whom_for_label }}">Call Assigned: </label></td>
+            <td>{{ form.by_whom }}</td>
+            <td><label for="{{ form.client_id_for_label }}">Client Assigned: </td>
+            <td>{{ form.client_id }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+    <input type="submit" value="Submit" \>
+
+</form>
+{% endblock %}

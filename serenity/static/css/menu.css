@@ -1,0 +1,36 @@
+.nav {
+    background-color: #0d0d0f;
+}
+
+.nav li a {
+    color: #fff;
+}
+
+.nav li a:visted {
+    color: #fff;
+}
+
+.nav li a:hover, .nav li a:active  {
+    color: #000;
+}
+
+.nav li a:hover {
+    background-color: #E7FF99;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: #E7FF99;
+    color: #000;
+}
+
+.nav-pills>li>a {
+    border-radius: 0px;
+}
+
+ul.dropdown-menu a {
+    color: #000;
+}
+
+nav li a.dropdown-toggle {
+    color: #000;
+}

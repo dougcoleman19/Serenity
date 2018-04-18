@@ -1,0 +1,116 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+
+<h3 class="header">Call Log Detail</h3>
+
+    <table border="0" id="add_client">
+        <tr>
+            <td><label for="{{ calllog.call_log_type_for_label }}">Call_Type: </label></td>
+            <td>{{ calllog.call_log_type }}</td>
+            <td><label for="{{ calllog.time_of_call_for_label }}">Call Time: </label></td>
+            <td>{{ calllog.time_of_call }}</td>
+            <td><label for="{{ calllog.county_of_incident_for_label }}">County of Incident</label>: </label></td>
+            <td>{{ calllog.county_of_incident }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.first_name_for_label }}">First Name: </label></td>
+            <td>{{ calllog.first_name }}</td>
+            <td><label for="{{ calllog.middle_init_for_label }}">MI: </label></td>
+            <td>{{ calllog.middle_init }}</td>
+            <td><label for="{{ calllog.last_name_for_label }}">Last Name: </label></td>
+            <td>{{ calllog.last_name }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.victims_name_for_label }}">Name of Victim: </label></td>
+            <td>{{ calllog.victims_name }}</td>
+            <td><label for="{{ calllog.safe_call_for_label }}">Safe to call back?: </label></td>
+            <td>{% if calllog.safe_call %} Yes {% else %} No {% endif %}</td>
+            <td><label for="{{ calllog.safe_phone_for_label }}">Safe Phone Number: </label></td>
+            <td>{{ calllog.safe_phone }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.abusers_name_for_label }}">Name of Abuser: </label></td>
+            <td>{{ calllog.abusers_name }}</td>
+            <td><label for="{{ calllog.abusers_city_for_label }}">Abuser's City: </label></td>
+            <td>{{ calllog.abusers_city }}</td>
+            <td><label for="{{ calllog.immediate_danger_for_label }}">Immediate Danger: </label></td>
+            <td>{% if calllog.immediate_danger %} Yes {% else %} No {% endif %}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.callback_for_label }}">Does caller require a call back?: </label></td>
+            <td>{% if calllog.callback %} Yes {% else %} No {% endif %}</td>
+
+            <td><label for="{{ calllog.nature_of_problem_for_label }}">Nature of Problem: </label></td>
+            <td>{{ calllog.nature_of_problem }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Victim Information</strong></p></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ calllog.previous_victim_dv_for_label }}">Has victim previously been a victim of Domestic Violence? </label></td>
+            <td>{% if calllog.previous_victim_dv %} Yes {% else %} No {% endif %}</td>
+            <td><label for="{{ calllog.dv_when_for_label }}">If Yes, when?: </td>
+            <td>{{ calllog.dv_when }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ calllog.previous_victim_sa_for_label }}">Has victim previously been a victim of Sexual Assault? </label></td>
+            <td>{% if calllog.previous_victim_sa %} Yes {% else %} No {% endif %}</td>
+            <td><label for="{{ calllog.sa_when_for_label }}">If Yes, when?: </td>
+            <td>{{ calllog.sa_when }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ calllog.children_for_label }}">Does victim have children? </label></td>
+            <td>{% if calllog.children %} Yes {% else %} No {% endif %}</td>
+            <td><label for="{{ calllog.num_of_children_for_label }}">If Yes, How Many?: </td>
+            <td>{{ calllog.num_children }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.children_info_for_label }}">Children Info: </label></td>
+            <td colspans="5">{{ calllog.children_info }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ calllog.previous_client_for_label }}">Has victim previously been a client of Avenues? </label></td>
+            <td>{% if calllog.previous_client %} Yes {% else %} No {% endif %}</td>
+            <td><label for="{{ calllog.pc_when_for_label }}">If Yes, when?: </td>
+            <td>{{ calllog.pc_when }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.taken_by_for_label }}">Call taken by: </label></td>
+            <td>{{ calllog.taken_by }}</td>
+            <td><label for="{{ calllog.call_length_for_label }}">Length of Call: </td>
+            <td>{{ calllog.call_length }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td valign="top"><label for="{{ calllog.call_notes_for_label }}">Call notes: </label></td>
+            <td colspan="5">{{ calllog.call_notes }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Admin Use Only</strong></p></td>
+        </tr>
+        <tr>
+            <td><label for="{{ calllog.by_whom_for_label }}">Call Assigned: </label></td>
+            <td>{{ calllog.by_whom }}</td>
+            <td><label for="{{ calllog.client_id_for_label }}">Client Assigned: </td>
+            <td>{{ calllog.client_id }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+
+    </table>
+
+{% if perms.can_change %}
+<p><a href="{% url 'calllog:calllogupdate' calllog.call_log_id %}">Click here to update the call log</a></p>
+{% endif %}
+
+{% endblock %}

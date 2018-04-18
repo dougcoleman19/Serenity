@@ -1,0 +1,40 @@
+{% extends "../serenity/base_main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h3>Most Recent Perps</h3>
+<table class="client-list">
+{% if latest_perp_list %}
+    <tr>
+        <th>Perp number</th>
+        <th>Perp First Name</th>
+        <th>Perp Last Name</th>
+        <th>Victim Name</th>
+        <th> </th>
+    </tr>
+    {% for perp in latest_perp_list %}
+        <tr >
+            <td>{{ perp.perp_id }}</td>
+            <td>{{ perp.first_name }}</td>
+            <td>{{ perp.last_name }}</td>
+            <td>{{ perp.victims_name }}</td>
+            <td><a class="edit-link" href="{% url 'neighborhoodwatch:perpdetail' perp.perp_id %}"><img src="{% static 'media/edit-interface-symbol_318-61460.jpg' %}" style="width: 14px; height: 14px;" /></a></td>
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No Perps are available.</p>
+{% endif %}
+</table>
+
+
+
+
+
+
+<br /><br />
+
+
+{% endblock %}

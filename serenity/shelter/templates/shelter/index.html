@@ -1,0 +1,46 @@
+{% extends "../serenity/base_main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+{% for shelter in shelter %}
+
+<h3>{{ shelter.shelter_name }} Status</h3>
+
+{% for room in rooms %}
+
+    <div class="room box-shadow">
+        <h4>{% if room.room_name %}{{ room.room_name }} {% else %}Room{{ room.room_number }} {% endif %}</h4>
+
+        <table>
+        {% for i in room.beds.all %}
+            <tr>
+
+                <td>Bed Size: </td>
+                <td>{{ i.bed_size }}</td>
+            </tr>
+            <tr>
+                <td>Client: </td>
+                <td>{% if i.client_assigned %}{{ i.client_assigned }} {% else %} Available {% endif %}</td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><a class="edit-link" href="{% url 'shelter:roomupdate' i.bed_id %}">Update Bed</a></td>
+            </tr>
+
+            <tr>
+                <td colspan="2"><hr class="style-two" /></td>
+            </tr>
+
+        {% endfor %}
+        </table>
+    </div>
+{% endfor %}
+
+{% endfor %}
+
+<br /><br />
+
+
+{% endblock %}

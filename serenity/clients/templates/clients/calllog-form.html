@@ -1,0 +1,31 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+<h2>Hotline Call Log</h2>
+<form method="post">{% csrf_token %}
+{{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.date_received.errors }}
+        <label for="{{ form.date_received_for_label }}">Date Received: </label>{{ form.date_received }}
+    </div>
+    <div class="fieldWrapper">
+        <a href="" onclick="newClients()">Click here for New Client</a>
+    </div>
+    <div class="fieldWrapper">
+        {{ form.client_id.errors }}
+        <label for="{{ form.client_id_for_label }}">Client ID: </label>{{ form.client_id }}
+    </div>
+
+    <div class="fieldWrapper">
+        {{ form.call_notes.errors }}
+        <label for="{{ form.call_notes_for_label }}">Call Notes: </label>{{ form.call_notes }}
+    </div>
+
+    <div class="fieldWrapper">
+        {{ form.get_username.errors }}
+        <label for="{{ form.created_by_for_label }}"> Author: </label>{{ form.created_by }}
+    </div>
+
+    <input type="submit" value="Submit" />
+</form>
+{% endblock %}

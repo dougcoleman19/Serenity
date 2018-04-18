@@ -1,0 +1,38 @@
+<ul class="nav nav-pills">
+{% if user.is_authenticated %}
+  <li><a href="{% url 'index' %}">Home</a></li>
+  <li class="dropdown" id="menu1">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="https://dougcoleman.pythonanywhere.com/clients/">
+      Clients
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'clients:index' %}">View Clients</a></li>
+      <li><a href="{% url 'clients:clientnew' %}">Add Clients</a></li>
+    </ul>
+  </li>
+  <li class="dropdown" id="menu1">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="https://dougcoleman.pythonanywhere.com/callog/">
+      Call Log
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'calllog:index' %}">View Call Logs</a></li>
+      <li><a href="{% url 'calllog:calllognew' %}">Add Call Log</a></li>
+    </ul>
+  </li>
+  <li class="dropdown" id="menu1">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      Perps
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li><a href="{% url 'neighborhoodwatch:index' %}">View Perps</a></li>
+      <li><a href="{% url 'neighborhoodwatch:perpnew' %}">Add New Perp</a></li>
+    </ul>
+  </li>
+  <li class="dropdown" id="menu1">
+    <a href="{% url 'shelter:index' %}">Shelter</a>
+  </li>
+{% endif %}
+</ul>

@@ -1,0 +1,14 @@
+
+{% block sidebar %}
+
+<div class="signed-in">
+{% if user.is_authenticated %}
+    <p class="currently_signed_in_as"><strong>Currently:</strong> {{ user.get_username }}</p>
+    <p ><a class="button-logout" href="{% url 'logout' %}?next={{request.path}}">Logout</a></p>
+{% else %}
+    <p><a class="button-logout" href="{% url 'login' %}?next={{request.path}}">Login</a></p>
+{% endif %}
+</div>
+
+
+{% endblock %}

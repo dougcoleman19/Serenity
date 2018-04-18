@@ -1,0 +1,23 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+
+<h3 class="header">{{ perp.last_name }}, {{ perp.first_name }} {{ perp.middle_init }}</h3>
+
+<table id="add_client">
+    <tr>
+        <td><strong>Perp Status: </strong></td>
+        <td>{{ perp.status_id }}</td>
+        <td><strong>Date of Birth: </strong></td>
+        <td>{{ perp.dob }}</td>
+
+    </tr>
+
+</table>
+
+<p><a href="{% url 'neighborhoodwatch:perpupdate' perp.perp_id %}">Click here to update the perp</a></p>
+
+
+
+
+{% endblock %}

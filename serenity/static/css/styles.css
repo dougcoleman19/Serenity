@@ -1,0 +1,179 @@
+
+#main-header {
+    background-color: #dcdcdc;
+    margin-bottom: 0px;
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    margin-top: 15px;
+}
+
+table.client-list {
+    width: 100%;
+}
+
+.client-list td {
+    margin-left: 10px;
+    margin-right: 10px;
+    height: 20px;
+}
+
+.client-list tr:nth-child(2n+1) {
+    background-color: #dcdcdc;
+
+}
+
+div.service-object a {
+    display: block;
+    width: 200px;
+    height: 115px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 15px;
+}
+
+a.clients {
+    background-color: #00F;
+    color: #fff;
+}
+
+div.service-object a.clients:hover {
+    background-color: #ffff80;
+    color: black;
+    text-decoration: none;
+}
+
+.currently_signed_in_as {
+    font-size: 12px;
+    font-weight: bolder;
+    color: #333300;
+}
+
+.signed-in {
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.button-logout {
+    display: block;
+    background-color: #dcdcdc;
+    padding: 3px 8px;
+}
+
+.box-shadow {
+    box-shadow: 3px 3px 5px #ccc;
+}
+
+.login-form-wrapper {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 15px;
+    padding: 10px;
+    width: 300px;
+}
+
+div.login-form {
+    margin: 5px 2px;
+}
+
+ul#id_demographics, ul.demographics, ul#id_abusetype {
+    margin-left: 5px;
+    padding-left: 5px;
+}
+
+ul#id_demographics li label, ul#id_abusetype li label {
+    font-weight: 500;
+}
+
+ul#id_demographics li, ul.demographics li, ul#id_abusetype li {
+    list-style-type: none;
+    float: left;
+    width: 226px;
+    margin-right: 19px;
+    margin-left: 0px;
+}
+
+ul#id_abusetype li {
+    width: 100px;
+}
+
+table#add_client {
+    width: 95%;
+    margin: 5px auto;
+    font-size: 12px;
+}
+
+table#add_client tr td {
+    padding: 5px 3px;
+    width: 156px;
+}
+
+table#add_client tr td.form-section {
+    background-color: #dcdcdc;
+    padding-top: 10px;
+    padding-bottom: 1px;
+    padding-left: 15px;
+}
+
+h3.header {
+    border-bottom: 5px solid #dcdcdc;
+    padding-bottom: 10px;
+    padding-left: 15px;
+}
+
+td.error {
+    border: 1px solid #ff0000;
+}
+
+div.alert-error ul li {
+    color: #ff0000;
+}
+
+div.widget-view {
+    width: 300px;
+    font-size: 12px;
+}
+
+div.widget-view table.client-list, table.client_list {
+    font-size: 12px;
+}
+
+div.footer-wrapper {
+    width: 100%;
+    background-color: #888888;
+    min-height: 100px;
+}
+
+div.room {
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+    float: left;
+    min-width: 300px;
+}
+
+div.room h4 {
+    display: block;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 5px 5px 8px;
+}
+
+div.room table {
+    width: 100%;
+}
+
+div.room td {
+    padding:3px;
+}
+
+hr.style-two {
+    margin: 2px auto;
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}

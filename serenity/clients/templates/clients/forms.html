@@ -1,0 +1,170 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+
+<h3 class="header">Add Client</h3>
+
+<form action="" method="POST">{% csrf_token %}
+
+{% if form.errors %}
+<div class="alert alert-error">
+    <ul>
+        {% for error in form.non_field_errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+        {% if form.first_name.errors %}
+            {% for error in form.first_name.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.last_name.errors %}
+            {% for error in form.last_name.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.emergency_contact_name.errors %}
+            {% for error in form.emergency_contact_name.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.city.errors %}
+            {% for error in form.city.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.address_1.errors %}
+            {% for error in form.address_1.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.address_2.errors %}
+            {% for error in form.address_2.errors %}
+                <li><strong>{{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.date_of_first_contact.errors %}
+            {% for error in form.date_of_first_contact.errors %}
+                <li><strong>Date of first contact: {{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.dob.errors %}
+            {% for error in form.dob.errors %}
+                <li><strong>DOB: {{ error|escape }}</strong></li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+</div>
+{% endif %}
+
+    <table border="0" id="add_client">
+        <tr>
+            <td><label for="{{ form.client_number_for_label }}">Client Number: </label></td>
+            <td>{{ form.client_number }}</td>
+            <td><label for="{{ form.client_type_for_label }}">Client Type: </label></td>
+            <td>{{ form.client_type }}</td>
+            <td><label for="{{ form.status_id_for_label }}">Status: </label></td>
+            <td>{{ form.status_id }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.primary_victim_for_label }}">Primary Victim: </label></td>
+            <td colspan="5">{{ form.primary_victim }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Incident Information</strong></p></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.date_of_first_contact_for_label }}">Date of Contact: </label></td>
+            <td>{{ form.date_of_first_contact }}</td>
+            <td><label for="{{ form.county_of_incident_for_label }}">County Incident Happened: </td>
+            <td>{{ form.county_of_incident }}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td colspan="6"><label for="{{ form.abusetype_for_label }}">Type of Abuse: </label></td>
+        </tr>
+        <tr>
+            <td colspan="6">{{ form.abusetype }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.perp_for_label }}">Perp: </label></td>
+            <td colspan="2">{{ form.perp }}</td>
+            <td><label for="{{ form.perp_relationship_for_label }}">Perp Relationship: </label></td>
+            <td colspan="2">{{ form.perp_relationship }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Client Information</strong></p></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.first_name_for_label }}">First Name: </label></td>
+            <td>{{ form.first_name }}</td>
+            <td><label for="{{ form.middle_init_for_label }}">MI: </label></td>
+            <td>{{ form.middle_init }}</td>
+            <td><label for="{{ form.last_name_for_label }}">Last Name: </label></td>
+            <td>{{ form.last_name }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.gender_for_label }}">Gender: </label></td>
+            <td>{{ form.gender }}</td>
+            <td><label for="{{ form.dob_for_label }}">Date of Birth: </label></td>
+            <td>{{ form.dob }}</td>
+            <td><label for="{{ form_ethnicity_for_label }}">Ethnicity: </label></td>
+            <td>{{ form.ethnicity }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Contact Information</strong></p></td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.address_1_for_label }}">Address: </label></td>
+            <td colspan="2">{{ form.address_1 }}</td>
+            <td><label for="{{ form.city_for_label }}">City: </label></td>
+            <td>{{ form.city }}</td>
+        </tr>
+        <tr>
+            <td>&nbsp; </td>
+            <td colspan="2">{{ form.address_2 }}</td>
+            <td><label for="{{ form.state_for_label }}">State: </label></td>
+            <td>{{ form.state }}</td>
+        </tr>
+        <tr>
+            <td><label for="{{ form.phone_number_for_label }}">Phone: </label></td>
+            <td colspan="2">{{ form.phone_number}}</td>
+            <td><label for="{{ form.county_of_residence_for_label }}">County: </label></td>
+            <td>{{ form.county_of_residence }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Demographics</strong></p></td>
+        </tr>
+        <tr>
+            <td colspan="6">{{ form.demographics }}</td>
+        </tr>
+        <tr>
+            <td colspan="6" class="form-section"><p><strong>Emergency Contact Information</strong></p></td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ form.emergency_contact_name_for_label }}">Emergency Contact Name: </label></td>
+            <td colspan="4">{{ form.emergency_contact_name }}</td>
+        </tr>
+        <tr>
+            <td colspan="2"><label for="{{ form.emergency_contact_phone_for_label }}">Emergency Contact Phone: </label></td>
+            <td colspan="4">{{ form.emergency_contact_phone }}</td>
+        </tr>
+
+        <tr>
+            <td colspan="3"><input type="submit" value="Submit" /></td>
+            <td colspan="3"><button type="reset" value="Reset">Clear Form</button></td>
+        </tr>
+
+
+    </table>
+
+
+</form>
+{% endblock %}

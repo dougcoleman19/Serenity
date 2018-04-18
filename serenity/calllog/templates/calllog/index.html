@@ -1,0 +1,41 @@
+{% extends "../serenity/base_main.html" %}
+
+{% load static %}
+
+{% block content %}
+
+<h3>Most Recent Call Logs</h3>
+<table class="client-list">
+{% if latest_call_log_list %}
+    <tr>
+        <th>Call Log number</th>
+        <th>Caller First Name</th>
+        <th>Caller Last Name</th>
+        <th>Victim Name</th>
+        <th> </th>
+    </tr>
+    {% for calllog in latest_call_log_list %}
+        <tr >
+            <td>{{ calllog.call_log_id }}</td>
+            <td>{{ calllog.first_name }}</td>
+            <td>{{ calllog.last_name }}</td>
+            <td>{{ calllog.victims_name }}</td>
+            <td><a class="edit-link" href="{% url 'calllog:calllogdetail' calllog.call_log_id %}"><img src="{% static 'media/edit-interface-symbol_318-61460.jpg' %}" style="width: 14px; height: 14px;" /></a></td>
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No Call Logs are available.</p>
+{% endif %}
+</table>
+
+
+
+
+
+
+<br /><br />
+
+
+{% endblock %}
+

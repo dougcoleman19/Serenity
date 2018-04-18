@@ -1,0 +1,29 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+<table class="client-list">
+{% if latest_client_list %}
+    <tr>
+        <th>Client ID</th>
+        <th>Client First Name</th>
+        <th>Client Last Name</th>
+        <th>Client Status</th>
+        <th> </th>
+    </tr>
+    {% for client in latest_client_list %}
+        <tr>
+            <td>{{ client.client_id }}</td>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td>{{ client.status_id }}</td>
+            <td><a class="edit-link" href="{% url 'clients:detail' client.client_id %}"><img src="{% static 'media/edit-interface-symbol_318-61460.jpg' %}" style="width: 14px; height: 14px;" /></a></td>
+        </tr>
+    {% endfor %}
+
+{% else %}
+    <p>No clients are available.</p>
+{% endif %}
+</table>
+
+<a class="home-page-block" href="{% url 'clients:clientnew' %}">Click to create a new client</a>
+{% endblock %}

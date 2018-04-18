@@ -1,0 +1,98 @@
+{% extends "../serenity/base_main.html" %}
+
+{% block content %}
+
+<h3 class="header">{{ client.last_name }}, {{ client.first_name }} {{ client.middle_init }}</h3>
+
+<table id="add_client">
+    <tr>
+        <td><strong>Client Number: </strong></td>
+        <td>{{ client.client_number }}</td>
+        <td><strong>Client Status: </strong></td>
+        <td>{{ client.status_id }}</td>
+        <td><strong>Client Type: </strong></td>
+        <td>{{ client.client_type }}</td>
+
+    </tr>
+    <tr>
+        <td><strong>Date of Birth: </strong></td>
+        <td>{{ client.dob }}</td>
+        <td><strong>Ethnicty: </strong></td>
+        <td>{{ client.ethnicity }}</td>
+        <td><strong>Gender: </strong></td>
+        <td>{{ client.gender }}</td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>Demographics: </strong></td>
+    </tr>
+    <tr>
+        <td colspan="6"><ul class="demographics">{% for demographic in client.demographics.all %} <li>{{ demographic }}</li> {% empty %} No Demographics Selected {% endfor %} </ul></td>
+    </tr>
+    <tr>
+        <td colspan="6" class="form-section"><p><strong>Incident Information</strong></p></td>
+    </tr>
+    <tr>
+        <td><strong>Date of First Contact: </strong></td>
+        <td>{{ client.date_of_first_contact }}</td>
+        <td><strong>Perp: </strong></td>
+        <td>[ Coming Soon ]</td>
+        <td><strong>Relationship to Perp: </strong></td>
+        <td>[ Coming Soon ]</td>
+    </tr>
+    <tr>
+        <td><strong>County of Incident: </strong></td>
+        <td>{{ client.county_of_incident }}</td>
+        <td><strong></strong></td>
+        <td></td>
+        <td><strong></strong></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td colspan="6"><strong>Type of Abuse: </strong></td>
+    </tr>
+    <tr>
+        <td colspan="6"><ul class="demographics">{% for type in client.abusetype.all %} <li>{{ type }}</li> {% empty %} No Abuse Type Selected {% endfor %} </ul></td>
+    </tr>
+    <tr>
+        <td colspan="6" class="form-section"><p><strong>Client Contact Information</strong></p></td>
+    </tr>
+    <tr>
+    <tr>
+        <td><strong>Address: </strong></td>
+        <td colspan="2">{{ client.address_1 }}</td>
+        <td><strong>City: </strong></td>
+        <td>{{ client.city }}</td>
+    </tr>
+    <tr>
+        <td>&nbsp; </td>
+        <td colspan="2">{{ client.address_2 }}</td>
+        <td><strong>State: </strong></td>
+        <td>{{ client.state }}</td>
+    </tr>
+    <tr>
+        <td><strong>Phone: </label></td>
+        <td colspan="2">{{ client.phone_number}}</td>
+        <td><strong>County: </strong></td>
+        <td>{{ client.county_of_residence }}</td>
+    </tr>
+    <tr>
+        <td colspan="6" class="form-section"><p><strong>Emergency Contact Information</strong></p></td>
+    </tr>
+    <tr>
+        <td colspan="2"><label for="{{ form.emergency_contact_name_for_label }}">Emergency Contact Name: </label></td>
+        <td>{{ client.emergency_contact_name }}</td>
+        <td colspan="2"><label for="{{ form.emergency_contact_phone_for_label }}">Emergency Contact Phone: </label></td>
+        <td>{{ client.emergency_contact_phone }}</td>
+    </tr>
+</table>
+
+<p><a href="{% url 'clients:clientupdate' client.client_id %}">Click here to update the client</a></p>
+{% if perms.can_delete %}
+<p><a href="{% url 'clients:clientdelete' client.client_id %}">Click here to delete the client</a></p>
+{% endif %}
+
+
+
+
+
+{% endblock %}
